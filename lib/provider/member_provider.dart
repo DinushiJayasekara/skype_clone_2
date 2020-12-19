@@ -8,7 +8,7 @@ class MemberProvider with ChangeNotifier {
 
   Member get getMember => _member;
 
-  void refreshMember() async {
+  Future<void> refreshMember() async {
     Member member = await _firebaseRepository.getMemberDetails();
     _member = member;
     notifyListeners();

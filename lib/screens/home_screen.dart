@@ -26,9 +26,9 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   void initState() {
     super.initState();
 
-    SchedulerBinding.instance.addPostFrameCallback((_) {
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
       memberProvider = Provider.of<MemberProvider>(context, listen: false);
-      memberProvider.refreshMember();
+      await memberProvider.refreshMember();
 
       _firebaseMethods.setUserState(
         userId: memberProvider.getMember.uid,
